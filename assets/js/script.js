@@ -1,5 +1,5 @@
 var questions = [
-  { q: "Question 1", choices: ["a,b,c"], answer: "a" },
+  { q: "Question 1", choices: ["a()", "b()", "c()"], answer: "a()" },
   { q: "Question 2", choices: ["a,b,c"], answer: "b" },
   { q: "Question 3", choices: ["a,b,c"], answer: "c" },
   { q: "Question 4", choices: ["a,b,c"], answer: "a" },
@@ -14,29 +14,20 @@ var timerEl = document.getElementById("countdown");
 var startBtn = document.getElementById("start");
 var questionsDiv = document.querySelector("#questionsDiv");
 
-// Timer that counts down from 60
 function start() {
-  var timeLeft = 60;
+  timeLeft = 75;
+  document.getElementById("timeLeft").innerHTML = timeLeft;
 
-  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-  var timeInterval = setInterval(function () {
-    // As long as the `timeLeft` is greater than 1
-    if (timeLeft > 1) {
-      // Set the `textContent` of `timerEl` to show the remaining seconds
-      timerEl.textContent = timeLeft + " seconds remaining";
-      // Decrement `timeLeft` by 1
-      timeLeft--;
-    } else if (timeLeft === 1) {
-      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-      timerEl.textContent = timeLeft + " second remaining";
-      timeLeft--;
-    } else {
-      // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-      timerEl.textContent = "";
-      // Use `clearInterval()` to stop the timer
-      clearInterval(timeInterval);
+  timer = setInterval(function () {
+    timeLeft--;
+    document.getElementById("timeLeft").innerHTML = timeLeft;
+    //proceed to end the game function when timer is below 0 at any time
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      endGame();
     }
   }, 1000);
+
   next();
 }
 
@@ -44,7 +35,7 @@ function start() {
 function next() {
   currentQuestion++;
 
-  if (currentQuestion > questions.length) {
+  if (currentQuestion > questions.length - 1) {
     endGame();
     return;
   }
@@ -75,4 +66,4 @@ function next() {
   document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-startBtn.onclick = start;
+// start.onclick = start;

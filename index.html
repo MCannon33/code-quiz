@@ -4,10 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./assets/js/script.js"></script>
     <title>Coding Quiz Challenge</title>
   </head>
   <body>
-    <a href="highscores.html">View HighScores</a>
+    <div id="nav">
+      <div class="left">
+        <a href="highscores.html">View HighScores</a>
+      </div>
+      <div class="right">
+        <h3 id="countdown">Countdown: <span id="timeLeft"></span</h3>
+      </div>
+    </div>
     <div class="container">
       <div id="guiz">
         <div id="quizBody">
@@ -16,11 +24,10 @@
             Take a timed quiz on JavaScript fundamentals and then see your high
             scores!
           </p>
-          <button id="start">Start Quiz</button>
-          <h3 id="countdown">Countdown:</h3>
+          <button onclick="start()">Start Quiz</button>
         </div>
       </div>
     </div>
-    <script src="./assets/js/script.js"></script>
+    <!-- <script src="./assets/js/script.js"></script> -->
   </body>
 </html>
