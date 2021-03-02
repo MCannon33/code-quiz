@@ -6,20 +6,17 @@ var questions = [
 ];
 
 var score = 0;
-var questionIndex = 0;
+var currentQuestion = -1;
+var timeLeft = 0;
+var timer;
 
 var timerEl = document.getElementById("countdown");
-// var mainEl = document.getElementById("main");
 var startBtn = document.getElementById("start");
 var questionsDiv = document.querySelector("#questionsDiv");
 
-var message =
-  "Congratulations! Now you are prepared to tackle the Challenge this week! Good luck!";
-var words = message.split(" ");
-
-// Timer that counts down from 5
-function countdown() {
-  var timeLeft = 5;
+// Timer that counts down from 60
+function start() {
+  var timeLeft = 60;
 
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   var timeInterval = setInterval(function () {
@@ -38,47 +35,44 @@ function countdown() {
       timerEl.textContent = "";
       // Use `clearInterval()` to stop the timer
       clearInterval(timeInterval);
-      // // Call the `displayMessage()` function
-      // displayMessage();
     }
   }, 1000);
+  next();
 }
 
-// Displays the message one word at a time
-// function displayMessage() {
-//   var wordCount = 0;
+//loops through the questions
+function next() {
+  currentQuestion++;
 
-//   // Uses the `setInterval()` method to call a function to be executed every 300 milliseconds
-//   var msgInterval = setInterval(function () {
-//     if (words[wordCount] === undefined) {
-//       clearInterval(msgInterval);
-//     } else {
-//       mainEl.textContent = words[wordCount];
-//       wordCount++;
-//     }
-//   }, 300);
-// }
-
-// Renders questions and choices to page:
-function render(questionIndex) {
-  // Clears existing data
-  questionsDiv.innerHTML = "";
-  ulCreate.innerHTML = "";
-  // For loops to loop through all info in array
-  for (var i = 0; i < questions.length; i++) {
-    // Appends question title only
-    var userQuestion = questions[questionIndex].title;
-    var userChoices = questions[questionIndex].choices;
-    questionsDiv.textContent = userQuestion;
+  if (currentQuestion > questions.length) {
+    endGame();
+    return;
   }
-  // New for each for question choices
-  userChoices.forEach(function (newItem) {
-    var listItem = document.createElement("li");
-    listItem.textContent = newItem;
-    questionsDiv.appendChild(ulCreate);
-    ulCreate.appendChild(listItem);
-    listItem.addEventListener("click", compare);
-  });
+
+  var quizContent = "<h2>" + questions[currentQuestion].q + "</h2>";
+
+  for (
+    var buttonLoop = 0;
+    buttonLoop < questions[currentQuestion].choices.length;
+    buttonLoop++
+  ) {
+    var buttonCode = '<button onclick="[ANS]">[CHOICE]</button>';
+    buttonCode = buttonCode.replace(
+      "[CHOICE]",
+      questions[currentQuestion].choices[buttonLoop]
+    );
+    if (
+      questions[currentQuestion].choices[buttonLoop] ==
+      questions[currentQuestion].answer
+    ) {
+      buttonCode = buttonCode.replace("[ANS]", "correct()");
+    } else {
+      buttonCode = buttonCode.replace("[ANS]", "incorrect()");
+    }
+    quizContent += buttonCode;
+  }
+
+  document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-startBtn.onclick = countdown;
+startBtn.onclick = start;
