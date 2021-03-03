@@ -44,7 +44,7 @@ function start() {
   timer = setInterval(function () {
     timeLeft--;
     document.getElementById("timeLeft").innerHTML = timeLeft;
-    //proceed to end the game function when timer is below 0 at any time
+    //end the game when timer is below 0
     if (timeLeft <= 0) {
       clearInterval(timer);
       endGame();
@@ -82,13 +82,13 @@ function endGame() {
 
 //decreases score
 function incorrect() {
-  timeLeft -= 15;
+  timeLeft -= 5;
   next();
 }
 
 //increases score
 function correct() {
-  score += 20;
+  score += 25;
   next();
 }
 
