@@ -1,21 +1,44 @@
 var questions = [
-  { q: "Question 1", choices: ["a()", "b()", "c()"], answer: "a()" },
-  { q: "Question 2", choices: ["a()", "b()", "c()"], answer: "b()" },
-  { q: "Question 3", choices: ["a()", "b()", "c()"], answer: "c()" },
-  { q: "Question 4", choices: ["a,b,c"], answer: "a" },
+  {
+    q: "When a Javascript function reaches a return statement it",
+    choices: [
+      "a(stops executing)",
+      "b(begins executing)",
+      "c(skips to the next function)",
+    ],
+    answer: "a()",
+  },
+  {
+    q: "Parentheses may include parameter names separated by",
+    choices: ["a(values)", "b(question marks)", "c(commas)"],
+    answer: "c()",
+  },
+  {
+    q:
+      "Variables declared within a JavaScript function, become what to the function",
+    choices: ["a(true)", "b(false)", "c(local)"],
+    answer: "c()",
+  },
+  {
+    q: "Whats another name for calling a function",
+    choices: ["a(invoke)", "b(start)", "c(arrival)"],
+    answer: "a()",
+  },
 ];
 
 var score = 0;
 var currentQuestion = -1;
 var timeLeft = 0;
 var timer;
+var player = "";
 
 var timerEl = document.getElementById("countdown");
 var startBtn = document.getElementById("start");
+
 // var questionsDiv = document.querySelector("#questionsDiv");
 
 function start() {
-  timeLeft = 10;
+  timeLeft = 60;
   document.getElementById("timeLeft").innerHTML = timeLeft;
 
   timer = setInterval(function () {
@@ -34,24 +57,28 @@ function endGame() {
   clearInterval(timer);
 
   var quizContent =
-    `
-  <h2>Game over!</h2>
-  <h3>You got a ` +
-    score +
-    ` /100!</h3>
-  <h3>Great Job! ` +
+    `<h3>Great Job! ` +
     score / 20 +
     ` questions correct!</h3>
-  <input type="text" id="name" placeholder="Name"> 
-  <button onclick="newScore()">New Score!</button>`;
-
+  <input type="text" id="player" placeholder="Name">
+ <button id = "newScore">New Score!</button>` +
+    player;
   document.getElementById("quizBody").innerHTML = quizContent;
 }
 
+// document.getElementById("newScore").onclick = newScore();
+// player = document.getElementById("player").value;
+// console.log(player);
+
 //new highscore
-function newScore() {
-  localStorage.setItem("highscore", score);
-}
+// function newScore() {
+//   console.log("here");
+//   if (player !== "") {
+//     player = document.getElementById("player").value;
+
+//   // {"score":score,"player":player}
+//   localStorage.setItem("highscore", { score, player });
+// }
 
 //decreases score
 function incorrect() {
