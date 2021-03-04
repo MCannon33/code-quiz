@@ -13,11 +13,17 @@ h1 {
   font-family: Georgia, Times, "Times New Roman", serif;
   font-weight: 50px;
 }
-.button {
+button {
   padding: 10px;
   margin: 24px;
   cursor: pointer;
   font-size: 24px;
-  background-color: #247ba0;
+  background-color: rgba(14, 136, 116, 0.467);
   color: white;
+}
+
+.quicknav {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-weight: 100px;
+  color: rgb(195, 40, 210);
 }
