@@ -49,7 +49,7 @@ function start() {
       clearInterval(timer);
       endGame();
     }
-  }, 1000);
+  }, 100);
 
   next();
 }
