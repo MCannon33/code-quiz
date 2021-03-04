@@ -66,20 +66,6 @@ function endGame() {
   document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-// document.getElementById("newScore").onclick = newScore();
-// player = document.getElementById("player").value;
-// console.log(player);
-
-//new highscore
-// function newScore() {
-//   console.log("here");
-//   if (player !== "") {
-//     player = document.getElementById("player").value;
-
-//   // {"score":score,"player":player}
-//   localStorage.setItem("highscore", { score, player });
-// }
-
 //decreases score
 function incorrect() {
   timeLeft -= 5;
