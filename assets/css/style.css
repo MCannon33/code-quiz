@@ -21,3 +21,9 @@ button {
   background-color: rgba(14, 136, 116, 0.467);
   color: white;
 }
+
+.quicknav {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-weight: 100px;
+  color: rgb(195, 40, 210);
+}
