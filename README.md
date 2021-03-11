@@ -2,8 +2,8 @@
 
 ## Description
 
-**Test your Javascript knowledge! This app features a countdown clock with a series of questions and then a final score. Highscores tab with top 10 scores to come! Start the quz by clicking the start quiz button.**
+**Test your Javascript knowledge! This quiz game features a countdown clock with a series of questions and then a final score. Highscores tab with top 10 scores to come! Begin to play by clicking the "start quiz" button.**
 
----
+## ![Code Quiz Cover](codequizscreen.png)
 
 - [Github](https://github.com/MCannon33/code-quiz)
