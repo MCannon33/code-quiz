@@ -38,7 +38,7 @@ var startBtn = document.getElementById("start");
 // var questionsDiv = document.querySelector("#questionsDiv");
 
 function start() {
-  timeLeft = 60;
+  timeLeft = 120;
   document.getElementById("timeLeft").innerHTML = timeLeft;
 
   timer = setInterval(function () {
