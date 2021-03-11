@@ -6,4 +6,8 @@
 
 ![Code Quiz Cover](/assets/images/codequizscreen.png)
 
-[My Github](https://github.com/MCannon33/code-quiz)
+---
+
+- [My Github](https://github.com/MCannon33/code-quiz)
+
+- [Deployed App](https://mcannon33.github.io/code-quiz/)
