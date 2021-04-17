@@ -49,7 +49,7 @@ function start() {
       clearInterval(timer);
       endGame();
     }
-  }, 100);
+  }, 1000);
 
   next();
 }
@@ -61,25 +61,63 @@ function endGame() {
     score / 20 +
     ` questions correct!</h3>
   <input type="text" id="player" placeholder="Name">
- <button id = "newScore">New Score!</button>` +
-    player;
+ <button onclick="newScore()">New Score!</button>`;
   document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-// document.getElementById("newScore").onclick = newScore();
-// player = document.getElementById("player").value;
-// console.log(player);
+//local storage
+function newScore() {
+  localStorage.setItem("highscore", score);
+  localStorage.setItem("highscoreName", document.getElementById("name").value);
+  getScore();
+}
 
-//new highscore
-// function newScore() {
-//   console.log("here");
-//   if (player !== "") {
-//     player = document.getElementById("player").value;
+function getScore() {
+  var quizContent =
+    `
+  <h2>` +
+    localStorage.getItem("highscoreName") +
+    `'s highscore is:</h2>
+  <h1>` +
+    localStorage.getItem("highscore") +
+    `</h1><br> 
+  
+  <button onclick="clearScore()">Clear score!</button><button onclick="resetGame()">Play Again!</button>
+  
+  `;
 
-//   // {"score":score,"player":player}
-//   localStorage.setItem("highscore", { score, player });
-// }
+  document.getElementById("quizBody").innerHTML = quizContent;
+}
 
+//clears the score name
+function clearScore() {
+  localStorage.setItem("highscore", "");
+  localStorage.setItem("highscoreName", "");
+
+  resetGame();
+}
+
+//reset the game
+function resetGame() {
+  clearInterval(timer);
+  score = 0;
+  currentQuestion = -1;
+  timeLeft = 0;
+  timer = null;
+
+  document.getElementById("timeLeft").innerHTML = timeLeft;
+
+  var quizContent = `
+  <h1>
+      Code Quiz!
+  </h1>
+  <h3>
+      Click to play!   
+  </h3>
+  <button onclick="start()">Start!</button>`;
+
+  document.getElementById("quizBody").innerHTML = quizContent;
+}
 //decreases score
 function incorrect() {
   timeLeft -= 5;
