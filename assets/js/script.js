@@ -57,20 +57,26 @@ function endGame() {
   clearInterval(timer);
 
   var quizContent =
-    `<h3>Great Job! ` +
+    `
+    <h2>Game over!</h2>
+    <h3>You got a ` +
+    score +
+    ` /100!</h3>
+    <h3>That means you got ` +
     score / 20 +
     ` questions correct!</h3>
-  <input type="text" id="player" placeholder="Name">
- <button onclick="newScore()">New Score!</button>`;
+    <input type="text" id="player" placeholder="First name"> 
+    <button onclick="setScore()">Set score!</button>`;
+
   document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-//local storage
-function newScore() {
+// local storage
+function setScore() {
   localStorage.setItem("highscore", score);
   localStorage.setItem(
     "highscoreName",
-    document.getElementById(`player`).value
+    document.getElementById("player").value
   );
   getScore();
 }
@@ -78,21 +84,21 @@ function newScore() {
 function getScore() {
   var quizContent =
     `
-  <h2>` +
+    <h2>` +
     localStorage.getItem("highscoreName") +
     `'s highscore is:</h2>
-  <h1>` +
+    <h1>` +
     localStorage.getItem("highscore") +
     `</h1><br> 
-  
-  <button onclick="clearScore()">Clear score!</button><button onclick="resetGame()">Play Again!</button>
-  
-  `;
+    
+    <button onclick="clearScore()">Clear score!</button><button onclick="resetGame()">Play Again!</button>
+    
+    `;
 
   document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-//clears the score name
+//'clear score'
 function clearScore() {
   localStorage.setItem("highscore", "");
   localStorage.setItem("highscoreName", "");
@@ -111,16 +117,17 @@ function resetGame() {
   document.getElementById("timeLeft").innerHTML = timeLeft;
 
   var quizContent = `
-  <h1>
-      Code Quiz!
-  </h1>
-  <h3>
-      Click to play!   
-  </h3>
-  <button onclick="start()">Start!</button>`;
+    <h1>
+        JavaScript Quiz!
+    </h1>
+    <h3>
+        Click to play!   
+    </h3>
+    <button onclick="start()">Start!</button>`;
 
   document.getElementById("quizBody").innerHTML = quizContent;
 }
+
 //decreases score
 function incorrect() {
   timeLeft -= 5;
