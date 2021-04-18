@@ -2,9 +2,9 @@ var questions = [
   {
     q: "When a Javascript function reaches a return statement it",
     choices: [
-      "a(stops executing)",
-      "b(begins executing)",
-      "c(skips to the next function)",
+      "stops executing()",
+      "begins executing()",
+      "skips to the next function()",
     ],
     answer: "a()",
   },
