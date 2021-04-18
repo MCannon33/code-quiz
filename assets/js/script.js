@@ -68,7 +68,7 @@ function endGame() {
 //local storage
 function newScore() {
   localStorage.setItem("highscore", score);
-  localStorage.setItem("highscoreName", document.getElementById("name").value);
+  localStorage.setItem("highscoreName", document.getElementById(`name`).value);
   getScore();
 }
 
