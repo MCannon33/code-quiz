@@ -10,19 +10,19 @@ var questions = [
   },
   {
     q: "Parentheses may include parameter names separated by",
-    choices: ["a(values)", "b(question marks)", "c(commas)"],
-    answer: "c()",
+    choices: ["values()", "question marks()", "commas()"],
+    answer: "commas()",
   },
   {
     q:
       "Variables declared within a JavaScript function, become what to the function",
-    choices: ["a(true)", "b(false)", "c(local)"],
-    answer: "c()",
+    choices: ["true()", "false()", "local()"],
+    answer: "local()",
   },
   {
     q: "Whats another name for calling a function",
-    choices: ["a(invoke)", "b(start)", "c(arrival)"],
-    answer: "a()",
+    choices: ["invoke()", "start()", "arrival()"],
+    answer: "invoke()",
   },
 ];
 
@@ -65,7 +65,7 @@ function endGame() {
     <h3>That means you got ` +
     score / 20 +
     ` questions correct!</h3>
-    <input type="text" id="player" placeholder="First name"> 
+    <input type="text" id="player" placeholder="Name"> 
     <button onclick="setScore()">Set score!</button>`;
 
   document.getElementById("quizBody").innerHTML = quizContent;
