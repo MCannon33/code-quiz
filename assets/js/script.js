@@ -6,7 +6,7 @@ var questions = [
       "begins executing()",
       "skips to the next function()",
     ],
-    answer: "a()",
+    answer: "stops executing()",
   },
   {
     q: "Parentheses may include parameter names separated by",
